@@ -158,13 +158,15 @@ export default class {
    * Create a service
    * https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#/create-a-service
    * @param  {Object}   opts  Query params in the request (optional)
+   * @param  {Object}   auth  Registry Auth Config, see linked engine documentation for details (optional)
    * @return {Promise}        Promise return the new service
    */
-  create (opts?: object): Promise<Service> {
+  create (opts?: Object, auth?: Object ): Promise<Service> {
     const call = {
       path: '/services/create?',
       method: 'POST',
       options: opts,
+      registryconfig: auth,
       statusCodes: {
         201: true,
         406: 'node is not part of a swarm',
@@ -181,6 +183,7 @@ export default class {
       })
     })
   }
+
 
   /**
    * Get the list of services
