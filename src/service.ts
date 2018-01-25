@@ -166,7 +166,7 @@ export default class {
       path: '/services/create?',
       method: 'POST',
       options: opts,
-      registryconfig: auth,
+      authconfig: auth,
       statusCodes: {
         201: true,
         406: 'node is not part of a swarm',
